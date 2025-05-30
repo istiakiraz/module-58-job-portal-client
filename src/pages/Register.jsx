@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Register = () => {
 
+    const {createUser} = use(AuthContext)
+
 
     const handleRegister = (e)=>{
+
+        
         e.preventDefault();
 
         const form = e.target 
@@ -12,6 +17,16 @@ const Register = () => {
         const password = form.password.value;
 
         console.log(email, password);
+
+        // create user by firebase
+        createUser(email, password)
+        .then(result =>{
+            console.log(result.user)
+        }).catch(error =>{
+            console.log(error);
+        })
+
+
 
 
     }
