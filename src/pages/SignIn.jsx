@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
+import SocialLogIn from '../components/SocialLogIn';
 
 const SignIn = () => {
 
@@ -25,9 +26,7 @@ const SignIn = () => {
                 console.log(result.user)
             }).catch(error =>{
                 console.log(error);
-            })
-
-        
+            })       
     
         }
     
@@ -57,6 +56,7 @@ const SignIn = () => {
         </fieldset>
 
         </form>
+        <SocialLogIn></SocialLogIn>
       </div>
     </div>
   </div>

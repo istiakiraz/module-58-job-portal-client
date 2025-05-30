@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
+import SocialLogIn from '../components/SocialLogIn';
 
 const Register = () => {
 
@@ -59,6 +60,7 @@ const Register = () => {
         </fieldset>
 
         </form>
+        <SocialLogIn></SocialLogIn>
       </div>
     </div>
   </div>
