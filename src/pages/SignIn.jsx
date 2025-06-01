@@ -1,10 +1,14 @@
 import React, { use } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import SocialLogIn from '../components/SocialLogIn';
+import { useLocation, useNavigate } from 'react-router';
 
 const SignIn = () => {
 
       const {signInUser} = use(AuthContext)
+      const location = useLocation()
+      const navigate = useNavigate();
+      const from = location.state || '/';
     
     
         const handleSignIn = (e)=>{
@@ -24,6 +28,7 @@ const SignIn = () => {
             signInUser(email, password)
             .then(result => {
                 console.log(result.user)
+                navigate(from)
             }).catch(error =>{
                 console.log(error);
             })       
@@ -56,7 +61,7 @@ const SignIn = () => {
         </fieldset>
 
         </form>
-        <SocialLogIn></SocialLogIn>
+        <SocialLogIn from = {from} ></SocialLogIn>
       </div>
     </div>
   </div>

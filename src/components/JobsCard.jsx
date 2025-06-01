@@ -34,7 +34,7 @@ const JobsCard = ({job}) => {
       
     </div>
     <div className='pt-5'>
-        <Link to={`/jobs/${_id}`} ><button className='btn btn-primary'>Apply Now</button></Link>
+        <Link to={`/jobs/${_id}`} ><button className='btn btn-primary'>Show Details</button></Link>
     </div>
   </div>
 </div>
