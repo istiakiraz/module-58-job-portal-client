@@ -1,9 +1,10 @@
 import React from 'react';
 import { CiLocationOn } from 'react-icons/ci';
+import { Link } from 'react-router';
 
 const JobsCard = ({job}) => {
 
-    const {title, location, jobType, cartegory, description, company, company_logo, requirements  } = job;
+    const {title, location, jobType, cartegory, description, company, company_logo, requirements, salaryRange,_id  } = job;
 
     return (
         <div className="card bg-indigo-100 pt-5 w-96 shadow-sm">
@@ -24,12 +25,16 @@ const JobsCard = ({job}) => {
      {title}
       <div className="badge bg-indigo-300">{jobType}</div>
     </h2>
+    <p className='font-semibold'>Salary: {salaryRange.min} - {salaryRange.max} {salaryRange.currency} </p>
     <p>{description}</p>
     <div className="card-actions justify-end">
       {
         requirements.map((skill, index) => <div key={index}   className="badge badge-outline">{skill}</div> )
       }
       
+    </div>
+    <div className='pt-5'>
+        <Link to={`/jobs/${_id}`} ><button className='btn btn-primary'>Apply Now</button></Link>
     </div>
   </div>
 </div>
