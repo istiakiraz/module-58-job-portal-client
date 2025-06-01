@@ -3,7 +3,7 @@ import { CiLocationOn } from 'react-icons/ci';
 
 const JobsCard = ({job}) => {
 
-    const {title, location, jobType, cartegory, description, company, company_logo  } = job;
+    const {title, location, jobType, cartegory, description, company, company_logo, requirements  } = job;
 
     return (
         <div className="card bg-indigo-100 pt-5 w-96 shadow-sm">
@@ -11,6 +11,7 @@ const JobsCard = ({job}) => {
     <figure>
     <img
       src={company_logo}
+      className='w-16'
       alt="Shoes" />
   </figure>
  <div>
@@ -23,10 +24,12 @@ const JobsCard = ({job}) => {
      {title}
       <div className="badge bg-indigo-300">{jobType}</div>
     </h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <p>{description}</p>
     <div className="card-actions justify-end">
-      <div className="badge badge-outline">Fashion</div>
-      <div className="badge badge-outline">Products</div>
+      {
+        requirements.map((skill, index) => <div key={index}   className="badge badge-outline">{skill}</div> )
+      }
+      
     </div>
   </div>
 </div>
