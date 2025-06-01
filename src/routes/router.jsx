@@ -12,7 +12,8 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Homepage></Homepage>
+                element: <Homepage></Homepage>,
+                loader: () => fetch('http://localhost:3000/jobs')
             },
             {
                path: 'register',

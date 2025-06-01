@@ -21,7 +21,7 @@ const Banner = () => {
           animate = {{x: [100, 150, 100]}}
           transition={{duration: 5 , delay : 2,  repeat: Infinity}}
 
-          className=" h-80 border-t-8 border-r-8 border-blue-500  rounded-tl-4xl rounded-br-4xl  shadow-2xl"
+          className=" h-80 border-t-8 border-r-8 border-blue-500  rounded-tr-4xl rounded-bl-4xl  shadow-2xl"
         />
        </div>
         <div className="flex-1 ">
