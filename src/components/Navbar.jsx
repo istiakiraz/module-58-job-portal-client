@@ -9,7 +9,9 @@ const Navbar = () => {
     const links = <>
     
     <li><NavLink to='/' >Home</NavLink></li>
-    <li><NavLink to='/' >Home</NavLink></li>
+    {
+      user && <li><NavLink to={`myApplications/${user?.email}`} >My-Applications</NavLink></li>
+    }
     <li><NavLink to='/' >Home</NavLink></li>   
     </>
 

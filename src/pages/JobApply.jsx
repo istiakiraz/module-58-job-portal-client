@@ -51,7 +51,7 @@ const JobApply = () => {
           });
         }
       })
-      .catch((error) => {
+      .catch((error) => { 
         console.log(error);
       });
   };

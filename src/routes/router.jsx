@@ -6,6 +6,7 @@ import SignIn from "../pages/SignIn";
 import JobDetails from "../pages/JobDetails";
 import JobApply from "../pages/JobApply";
 import PrivateRoute from "../privateRoute/PrivateRoute";
+import MyApplications from "../pages/MyApplications";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,14 @@ export const router = createBrowserRouter([
             <JobApply></JobApply>
           </PrivateRoute>
         ),
+      },
+      {
+        path: '/myApplications/:email',
+        element: <PrivateRoute>
+            <MyApplications></MyApplications>
+        </PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/applications?email=${params.email}`),
       },
       {
         path: "register",
