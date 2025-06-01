@@ -1,17 +1,27 @@
 import React from 'react';
+import { CiLocationOn } from 'react-icons/ci';
 
-const JobsCard = () => {
+const JobsCard = ({job}) => {
+
+    const {title, location, jobType, cartegory, description, company, company_logo  } = job;
+
     return (
-        <div className="card bg-base-100 w-96 shadow-sm">
-  <figure>
+        <div className="card bg-indigo-100 pt-5 w-96 shadow-sm">
+  <div className='flex pl-5 items-center space-x-2 '>
+    <figure>
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      src={company_logo}
       alt="Shoes" />
   </figure>
+ <div>
+     <h1 className='text-2xl font-semibold '>{company}</h1>
+     <p className='flex items-center gap-1'><CiLocationOn />{location}</p>
+ </div>
+  </div>
   <div className="card-body">
     <h2 className="card-title">
-      Card Title
-      <div className="badge badge-secondary">NEW</div>
+     {title}
+      <div className="badge bg-indigo-300">{jobType}</div>
     </h2>
     <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
     <div className="card-actions justify-end">
