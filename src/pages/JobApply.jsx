@@ -18,6 +18,14 @@ const JobApply = () => {
 
     console.log(linkedIn, github, resume);
 
+    const application = {
+        jobId,
+        applicant : user.email,
+        linkedIn,
+        github,
+        resume
+    }
+
 
 
   }
