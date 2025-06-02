@@ -1,13 +1,33 @@
 import React from "react";
 
 const AddJobs = () => {
+
+
+    const handleAddJob=(e)=>{
+        e.preventDefault();
+
+        const form = e.target;
+
+        const formData = new FormData(form);
+
+        const addJobData = Object.fromEntries(formData.entries())
+        console.log(addJobData);
+
+
+      
+
+
+    }
+
+
+
   return (
     <div>
       <h1 className="text-center text-4xl py-16 text-pink-700">Add Jobs</h1>
 
-      <form className="mb-16">
+      <form onSubmit={handleAddJob} className="mb-16">
         {/* basic info*/}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
           <legend className="fieldset-legend">Basic Info</legend>
 
           <label className="label">Job Title</label>
@@ -44,7 +64,7 @@ const AddJobs = () => {
         </fieldset>
 
         {/* job type */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
           <legend className="fieldset-legend">Job type</legend>
 
           <div className="filter">
@@ -76,7 +96,7 @@ const AddJobs = () => {
         </fieldset>
 
         {/* job Category  */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
           <legend className="fieldset-legend">job Category</legend>
 
           <select
@@ -92,56 +112,106 @@ const AddJobs = () => {
         </fieldset>
 
         {/* Application deadline */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
           <legend className="fieldset-legend">Application deadline</legend>
 
           <input type="date" className="input" />
         </fieldset>
 
         {/* Salary Range */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
           <legend className="fieldset-legend">Salary Range</legend>
 
           <div className="grid gap-1 lg:grid-cols-3">
-           <div>
-             
-            <label className="label">Minimum Salary</label>
-          <input type="number" name="salaryMin" className="input" placeholder="Minimum Salary" />
-           </div>
-<div>
-    
-          <label className="label">Maximum Salary</label>
-          <input type="number" 
-          name="salaryMax"
-          className="input" placeholder="Maximum Salary" />
-</div>
-<div>
-    
-          <label className="label">Currency</label>
-          
-          <select
-            name="category"
-            defaultValue="Select a Currency"
-            className="select"
-          >
-            <option disabled={true}>Select a Currency</option>
-            <option>bdt</option>
-            <option>usd</option>
-            <option>eu</option>
-          </select>
-</div>
+            <div>
+              <label className="label">Minimum Salary</label>
+              <input
+                type="number"
+                name="min"
+                className="input"
+                placeholder="Minimum Salary"
+              />
+            </div>
+            <div>
+              <label className="label">Maximum Salary</label>
+              <input
+                type="number"
+                name="max"
+                className="input"
+                placeholder="Maximum Salary"
+              />
+            </div>
+            <div>
+              <label className="label">Currency</label>
+
+              <select
+                name="currency"
+                defaultValue="Select a Currency"
+                className="select"
+              >
+                <option disabled={true}>Select a Currency</option>
+                <option>bdt</option>
+                <option>usd</option>
+                <option>eu</option>
+              </select>
+            </div>
           </div>
         </fieldset>
 
-        {/*  */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-          <legend className="fieldset-legend">Basic Info</legend>
+        {/*  Job Description*/}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+          <legend className="fieldset-legend">Job Description</legend>
+          <textarea
+            placeholder="Job Description"
+            name="description"
+            className="textarea textarea-neutral"
+          ></textarea>
+        </fieldset>
+
+        {/* job requirement */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+          <legend className="fieldset-legend">job requirement</legend>
+
+          <textarea
+            placeholder="requirements (separate by comma)"
+            name="requirements"
+            className="textarea textarea-neutral"
+          ></textarea>
+        </fieldset>
+
+        {/* job responsibilities */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+          <legend className="fieldset-legend">job responsibilities</legend>
+
+          <textarea
+            placeholder="responsibilities (separate by comma)"
+            name="responsibilities"
+            className="textarea textarea-neutral"
+          ></textarea>
         </fieldset>
 
         {/*  */}
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-          <legend className="fieldset-legend">Basic Info</legend>
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
+          <legend className="fieldset-legend">HR info</legend>
+
+          <label className="label">HR name</label>
+          <input
+            type="text"
+            className="input"
+            name="hr_name"
+            placeholder="HR name"
+          />
+
+          <label className="label">HR Email</label>
+          <input
+            type="email"
+            name="hr_email"
+            className="input"
+            placeholder="HR Email"
+          />
         </fieldset>
+    <input type="submit" className="btn  btn-primary" value="Add Job" />
+
       </form>
     </div>
   );
