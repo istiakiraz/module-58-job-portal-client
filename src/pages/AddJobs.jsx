@@ -1,11 +1,150 @@
-import React from 'react';
+import React from "react";
 
 const AddJobs = () => {
-    return (
-        <div>
-            <h1 className='text-center text-4xl py-16 text-pink-700'>Add Jobs</h1>
-        </div>
-    );
+  return (
+    <div>
+      <h1 className="text-center text-4xl py-16 text-pink-700">Add Jobs</h1>
+
+      <form className="mb-16">
+        {/* basic info*/}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Basic Info</legend>
+
+          <label className="label">Job Title</label>
+          <input
+            type="text"
+            className="input"
+            name="title"
+            placeholder="Job title"
+          />
+
+          <label className="label">Company</label>
+          <input
+            type="text"
+            name="company"
+            className="input"
+            placeholder="Company Name"
+          />
+
+          <label className="label">Location</label>
+          <input
+            type="text"
+            name="location"
+            className="input"
+            placeholder="Company Location"
+          />
+
+          <label className="label">Company Logo</label>
+          <input
+            type="text"
+            name="company_logo"
+            className="input"
+            placeholder="Company Logo URL"
+          />
+        </fieldset>
+
+        {/* job type */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Job type</legend>
+
+          <div className="filter">
+            <input
+              className="btn filter-reset"
+              type="radio"
+              name="jobType"
+              aria-label="On-Site"
+            />
+            <input
+              className="btn"
+              type="radio"
+              name="jobType"
+              aria-label="Remote"
+            />
+            <input
+              className="btn  "
+              type="radio"
+              name="jobType"
+              aria-label="Hybrid"
+            />
+            <input
+              className="btn"
+              type="radio"
+              name="jobType"
+              aria-label="Next.js"
+            />
+          </div>
+        </fieldset>
+
+        {/* job Category  */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">job Category</legend>
+
+          <select
+            name="category"
+            defaultValue="job Category"
+            className="select"
+          >
+            <option disabled={true}>job Category</option>
+            <option>IT</option>
+            <option>Marketing</option>
+            <option>Finance</option>
+          </select>
+        </fieldset>
+
+        {/* Application deadline */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Application deadline</legend>
+
+          <input type="date" className="input" />
+        </fieldset>
+
+        {/* Salary Range */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Salary Range</legend>
+
+          <div className="grid gap-1 lg:grid-cols-3">
+           <div>
+             
+            <label className="label">Minimum Salary</label>
+          <input type="number" name="salaryMin" className="input" placeholder="Minimum Salary" />
+           </div>
+<div>
+    
+          <label className="label">Maximum Salary</label>
+          <input type="number" 
+          name="salaryMax"
+          className="input" placeholder="Maximum Salary" />
+</div>
+<div>
+    
+          <label className="label">Currency</label>
+          
+          <select
+            name="category"
+            defaultValue="Select a Currency"
+            className="select"
+          >
+            <option disabled={true}>Select a Currency</option>
+            <option>bdt</option>
+            <option>usd</option>
+            <option>eu</option>
+          </select>
+</div>
+          </div>
+        </fieldset>
+
+        {/*  */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Basic Info</legend>
+        </fieldset>
+
+        {/*  */}
+        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+          <legend className="fieldset-legend">Basic Info</legend>
+        </fieldset>
+      </form>
+    </div>
+  );
 };
 
 export default AddJobs;
