@@ -10,7 +10,10 @@ const Navbar = () => {
     
     <li><NavLink to='/' >Home</NavLink></li>
     {
-      user && <li><NavLink to={`myApplications/${user?.email}`} >My-Applications</NavLink></li>
+      user && <li><NavLink to={`/myApplications/${user?.email}`} >My-Applications</NavLink></li>
+    }
+     {
+      user && <li><NavLink to='/addJobs'>Add-Jobs</NavLink></li>
     }
     <li><NavLink to='/' >Home</NavLink></li>   
     </>
