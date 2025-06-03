@@ -1,4 +1,6 @@
+import axios from "axios";
 import React from "react";
+import TinyEditor from "../components/TinyEditor";
 
 const AddJobs = () => {
 
@@ -11,7 +13,36 @@ const AddJobs = () => {
         const formData = new FormData(form);
 
         const addJobData = Object.fromEntries(formData.entries())
-        console.log(addJobData);
+        // console.log(addJobData);
+
+        // process salary range data 
+        const {min, max, currency, ...newJob} = addJobData;
+        newJob.salaryRange = {min, max, currency}
+
+        //process requirements
+        newJob.requirements = newJob.requirements.split(',').map(res => res.trim());
+
+        //process responsibilities 
+
+        newJob.responsibilities = newJob.responsibilities.split(',').map(res=> res.trim())
+
+        //extra status 
+        newJob.status = 'active'
+
+        console.log(newJob);
+
+        //save job to database
+
+        axios.post('http://localhost:3000/jobs', newJob).then(res=> {
+            console.log(res.data);
+        }).catch(error => {
+            console.log(error);
+        })
+
+
+
+
+
 
 
       
@@ -73,18 +104,21 @@ const AddJobs = () => {
               type="radio"
               name="jobType"
               aria-label="On-Site"
+              value='On-site'
             />
             <input
               className="btn"
               type="radio"
               name="jobType"
               aria-label="Remote"
+              value='Remote'
             />
             <input
               className="btn  "
               type="radio"
               name="jobType"
               aria-label="Hybrid"
+              value="Hybrid"
             />
             <input
               className="btn"
@@ -115,7 +149,7 @@ const AddJobs = () => {
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-full border p-4">
           <legend className="fieldset-legend">Application deadline</legend>
 
-          <input type="date" className="input" />
+          <input type="date" name="deadline" className="input" />
         </fieldset>
 
         {/* Salary Range */}
@@ -211,6 +245,8 @@ const AddJobs = () => {
           />
         </fieldset>
     <input type="submit" className="btn  btn-primary" value="Add Job" />
+
+    <TinyEditor></TinyEditor>
 
       </form>
     </div>
