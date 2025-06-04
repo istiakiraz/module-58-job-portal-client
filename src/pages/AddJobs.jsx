@@ -3,54 +3,47 @@ import React from "react";
 import TinyEditor from "../components/TinyEditor";
 
 const AddJobs = () => {
+  const handleAddJob = (e) => {
+    e.preventDefault();
 
+    const form = e.target;
 
-    const handleAddJob=(e)=>{
-        e.preventDefault();
+    const formData = new FormData(form);
 
-        const form = e.target;
+    const addJobData = Object.fromEntries(formData.entries());
+    // console.log(addJobData);
 
-        const formData = new FormData(form);
+    // process salary range data
+    const { min, max, currency, ...newJob } = addJobData;
+    newJob.salaryRange = { min, max, currency };
 
-        const addJobData = Object.fromEntries(formData.entries())
-        // console.log(addJobData);
+    //process requirements
+    newJob.requirements = newJob.requirements
+      .split(",")
+      .map((res) => res.trim());
 
-        // process salary range data 
-        const {min, max, currency, ...newJob} = addJobData;
-        newJob.salaryRange = {min, max, currency}
+    //process responsibilities
 
-        //process requirements
-        newJob.requirements = newJob.requirements.split(',').map(res => res.trim());
+    newJob.responsibilities = newJob.responsibilities
+      .split(",")
+      .map((res) => res.trim());
 
-        //process responsibilities 
+    //extra status
+    newJob.status = "active";
 
-        newJob.responsibilities = newJob.responsibilities.split(',').map(res=> res.trim())
+    console.log(newJob);
 
-        //extra status 
-        newJob.status = 'active'
+    //save job to database
 
-        console.log(newJob);
-
-        //save job to database
-
-        axios.post('http://localhost:3000/jobs', newJob).then(res=> {
-            console.log(res.data);
-        }).catch(error => {
-            console.log(error);
-        })
-
-
-
-
-
-
-
-      
-
-
-    }
-
-
+    axios
+      .post("http://localhost:3000/jobs", newJob)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -104,14 +97,14 @@ const AddJobs = () => {
               type="radio"
               name="jobType"
               aria-label="On-Site"
-              value='On-site'
+              value="On-site"
             />
             <input
               className="btn"
               type="radio"
               name="jobType"
               aria-label="Remote"
-              value='Remote'
+              value="Remote"
             />
             <input
               className="btn  "
@@ -244,10 +237,9 @@ const AddJobs = () => {
             placeholder="HR Email"
           />
         </fieldset>
-    <input type="submit" className="btn  btn-primary" value="Add Job" />
+        <input type="submit" className="btn  btn-primary" value="Add Job" />
 
-    <TinyEditor></TinyEditor>
-
+        <TinyEditor></TinyEditor>
       </form>
     </div>
   );
