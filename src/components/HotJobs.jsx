@@ -95,12 +95,16 @@ const HotJobs = () => {
   if (category) query.push(`category=${category}`);
   const queryString = query.join('&');
   
-
+ 
+ 
   jobsPromise(queryString)
     .then(data => setJobs(data))
     
      setLoading(false);
 }, [searchTerm, category]);
+
+// const data = use( jobsPromise(queryString)) 
+//      setJobs(data)
 
 
   return (
