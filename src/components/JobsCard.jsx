@@ -11,7 +11,7 @@ const JobsCard = ({job}) => {
   <div className='flex pl-5 items-center space-x-2 '>
     <figure>
     <img
-      src={company_logo}
+      src={company_logo || null}
       className='w-16'
       alt="Shoes" />
   </figure>
